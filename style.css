@@ -1,0 +1,123 @@
+@import url("https://fonts.googleapis.com/css?family=M+PLUS+Rounded+1c");
+@import url("https://fonts.googleapis.com/css?family=M+PLUS+1p");
+@import url("https://use.fontawesome.com/releases/v5.1.0/css/all.css");
+
+body{
+    font-family: "M PLUS 1p";
+}
+
+a{
+  color:#444;
+  text-decoration: underline dotted #444;
+}
+a[href^="\.\/"]:before,
+a[href^="http"]:after{
+  font-family: "Font Awesome 5 Free";
+  font-weight: 900; /* アイコンが表示されない場合 */
+  font-size:0.6em;
+  position: relative;
+  vertical-align: 0.5em;
+  padding:0 1px;
+  text-decoration: none;
+  display: inline-block; /* 親要素のDecorationを無効 */
+  outline: none;
+}
+a[href^="\.\/"]:before{
+  content: "\f0c1";
+}
+a[href^="http"]:after {
+  content: "\f35d";
+}
+
+p{
+  margin:1em 0;
+}
+
+p,li,dt,dd{
+  line-height: 1.9em;
+}
+dt{
+  margin: 1em 0 0.5em 0.5em;
+}
+
+input,textarea{
+  line-height: 1.9em;
+  padding: 0.3em 0.5em;
+  border:solid 1px #666;
+  margin:0 0 1em;
+}
+input:focus,
+textarea:focus{
+  outline: solid 1px #000;
+}
+
+address{
+  border-top:solid 1px #000;
+  padding:5px;
+  font-style:normal;
+  text-align: center;
+}
+address a{
+  text-decoration: none;
+}
+pre{
+  background: #f3f3f3;
+  padding: 1em;
+  line-height: 1.3em;
+  overflow: auto;
+}
+dt{
+  font-weight: bold;
+}
+
+h2,h3,h4{
+  margin:1.5em 0 0 0;
+}
+
+h1:before,
+h2:before,
+h3:before,
+h4:before{
+  font-family: "Font Awesome 5 Free";
+  content: "\f2a1\f436";
+  letter-spacing: -1em;
+  padding-right:1.2em;
+  font-size:0.8em;
+}
+
+
+.konami_on{
+  background:#F64D54;
+  font-family: "M PLUS Rounded 1c";
+}
+.konami_on a{
+    color: #fff;
+}
+
+.set_now{
+    font-weight: bold;
+}
+
+.button {
+  transition: .4s;
+  font-weight:bold;
+  font-family: "M PLUS Rounded 1c";
+  font-size:1.05em;
+
+  background-color: #000;
+  border: 3px solid #000;
+  color: #fff;
+  padding: 1em 1.8em;
+
+  text-decoration: none;
+  display: inline-block;
+}
+.button:hover {
+  background-color: #fff;
+  border-color: #000;
+  color: #000;
+}
+.button:active{
+  border-color: #666;
+  color: #666;
+}

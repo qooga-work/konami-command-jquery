@@ -1,0 +1,137 @@
+<html lang="ja" prefix="og: http://ogp.me/ns#">
+<head prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# article: http://ogp.me/ns/article#">
+<meta charset="UTF-8">
+<title>コナミコマンドjQueryプラグイン：クーガキカク</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="keywords"  content="jQueryプラグイン,コナミコマンド" />
+
+<meta property="og:site_name" content="クーガキカク" />
+<meta property="og:title" content="コナミコマンドjQueryプラグイン" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://qooga.jb-jk.net/item/js/konami/" />
+<meta property="og:image" content="https://qooga.jb-jk.net/item/js/konami/prev.png" />
+<meta property="og:description" content="コナミコマンド（上上下下左右左右BA）を画面内で打ち込むと、イベントON・OFFする機能の、カンタン組み込みが出来るjQueryプラグイン。Cookie使っているので、設定不要でバックエンドにもラクラク組み込むことが出来ます！"/>
+<meta property="og:locale" content="ja_JP" />
+
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:site" content="@qooga" />
+<meta name="twitter:creator" content="@qooga" />
+
+<meta content="100003398590729" property="fb:admins" />
+
+<link rel='dns-prefetch' href='//www.google.com' />
+<link rel='dns-prefetch' href='//s.w.org' />
+
+<link rel="apple-touch-icon" sizes="180x180" href="/favicon.png">
+<link rel="shortcut icon" href="./favicon.ico" />
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js" type="text/javascript"></script>
+<script src="./dist/jquery.konami.js" type="text/javascript"></script>
+<script type="text/javascript">
+$(function(){
+    $('body').konami();
+});
+</script>
+<link href="./style.css" rel="stylesheet">
+</head>
+<body>
+
+<a id="t1" name="t1"></a>
+<h1>コナミコマンドjQueryプラグイン</h1>
+<p>コナミコマンドを打ち込むとイベントを発生させる機能を、カンタンに仕込むためのjQueryプラグイン。</p>
+<p>Githubで公開中です。MIT License。</p>
+<p><a href="https://github.com/TamaOh/konami-command-jquery" target="_blank" class="button">ダウンロード</a></p>
+
+        
+<a id="t2" name="t2"></a>
+<h2>コナミコマンドとは</h2>
+<p>ファミコン時代『<a href="https://www.konami.com/" target="_blank">KONAMI</a>』から出たゲームに仕込まれていた、『↑↑↓↓←→←→BA』すると特別な何かが起きるという有名なアレ。</p>
+
+
+<a id="t3" name="t3"></a>
+<h2>何が出来るの？</h2>
+<p>Webサイトにコナミコマンドを打ち込む度に、Cookieに起動(1)/停止(0またはナシ)を設定することを繰り返します。</p>
+<p>Cookieに起動の有無を保存しているので、java・PHP・Ruby・Python等からも確認出来、サーバサイドへの組み込みが用意です。</p>
+<p>いくつか設定を変更できるオプションがあります。</p>
+<p>v3系でのみテスト済み、他は未確認です。※v3版がみつからなく作成したため</p>
+
+
+<a id="t6" name="t6"></a>
+<h2>デモページ</h2>
+<p><a href="./konami.php">オプションを設定し、PHPでcookie内容を表示させたデモページ</a></p>
+<p>このページ自体にも、一番シンプルな状態で設定してあるので、お試しください。</p>
+
+
+<a id="t4" name="t4"></a>
+<h2>設置方法</h2>
+<ol>
+<li>『<a href="https://github.com/TamaOh/konami-command-jquery" target="_blank">jquery.konami.js</a>』をダウンロードし、設置。</li>
+<li>jQueryの読み込み後、読み込むように設定。</li>
+<li>『$(対象).konami(オプション);』を呼び出す。※対象設定はするが、別に対象を絞れる訳ではない…</li>
+</ol>
+
+<h3>設置例</h3>
+<pre><code>&lt;script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js" type="text/javascript"&gt;&lt;/script&gt;
+&lt;script src="./jquery.konami.js" type="text/javascript"&gt;&lt;/script&gt;
+&lt;script type="text/javascript"&gt;
+$(function(){
+    $('body').konami();
+});
+&lt;/script&gt;
+</code></pre>
+
+
+<a id="t5" name="t5"></a>
+<h3>オプション</h3>
+パラメータとして、指定されたキーの配列を１つ指定。
+<dl>
+  <dt>比較対象コマンドデータ (setCommand)</dt>
+  <dd>
+    setCommand: [38,38,40,40,37,39,37,39,66,65],
+  </dd>
+  <dd>初期値はコナミコマンド(38:上 40:下 37:左 39:右 66:B 65:A)</dd>
+  <dd>コマンド変えたい場合もあるある。</dd>
+
+  <dt>起動時に動かす処理 (onFunction)</dt>
+  <dd>
+    onFunction: function(){alert("Start konami-command!");},
+  </dd>
+  <dd>初期値はアラートメッセージ『Start konami-command!』。</dd>
+  <dd>
+    配列に設定だから、『function(){}』で囲わず、関数名を設定しようとすると、その設定をした場所で実行されてしまう。<br />
+    何かいい方法知っている人、教えて下さい…。
+  </dd>
+
+  <dt>停止時に動かす処理 (offFunction)</dt>
+  <dd>
+    offFunction: function(){alert("End konami-command!");},
+  </dd>
+  <dd>初期値はアラートメッセージ『End konami-command!』。</dd>
+  <dd>起動時処理と同様。困っていることも同様。</dd>
+
+  <dt>保存するCookie名 (cookieName)</dt>
+  <dd>
+    cookieName: 'konamiCMD',
+  </dd>
+  <dd>初期値は『konamiCMD』。</dd>
+  <dd>コマンド変えたら、Cookie名も変えたくなると思った。</dd>
+</dl>
+
+
+<div class="ninja_onebutton">
+<script type="text/javascript">
+//<![CDATA[
+(function(d){
+if(typeof(window.NINJA_CO_JP_ONETAG_BUTTON_eb03a8ac3330de6bdd3765b02ec70a7e)=='undefined'){
+    document.write("<sc"+"ript type='text\/javascript' src='\/\/omt.shinobi.jp\/b\/eb03a8ac3330de6bdd3765b02ec70a7e'><\/sc"+"ript>");
+}else{
+    window.NINJA_CO_JP_ONETAG_BUTTON_eb03a8ac3330de6bdd3765b02ec70a7e.ONETAGButton_Load();}
+})(document);
+//]]>
+</script><span class="ninja_onebutton_hidden" style="display:none;"></span><span style="display:none;" class="ninja_onebutton_hidden"></span>
+</div>
+
+
+<address><a href="https://qooga.jb-jk.net/" target="_blank">©クーガキカク</a></address>
+</body>
+</html>
