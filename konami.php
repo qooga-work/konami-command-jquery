@@ -1,7 +1,8 @@
 <?php
 // Cookie消す処理
 if(isset($_REQUEST['delete_cookie'])){
-    setcookie('konamiCMD', '', time() - 1800);
+    // Chrome 80
+    setcookie('konamiCMD', '', time() - 1800, '/; SameSite=None;', null, true, false);
     header('Location: ./konami.php', true , 301);
 }
 ?>

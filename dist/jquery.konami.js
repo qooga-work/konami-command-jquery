@@ -36,7 +36,9 @@
     var keyLength = setting.setCommand.length;
 
     // cookie配列
-    var readCookie = [];
+    var readCookie = {
+      'SameSite' : 'None',
+    };
 
     // コマンド発動しているか　1:有効 0:無効
     var nowType = 0;
